@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Online Order</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Online Order</h1>
+  <div id="top-bar">
+    <button onclick="openProductModal()">➕ Add Product</button>
+
+    <!-- Geçmiş Siparişler Butonu -->
+    <button onclick="openModal('order-history-modal')">📦 Past Orders</button>
+
+    <button onclick="openTrashModal()">🗑️ View Trash</button>
+
+    <select id="category-filter" onchange="renderProducts()">
+    </select>
+  </div>
+
+
+
+  <div class="products" id="products-container"></div>
+
+  <!-- Cart -->
+  <div class="cart-box" id="cart-box">
+    <h3>🛒 Cart</h3>
+    <ul id="cart"></ul>
+
+    <form id="order-form">
+      <input type="text" id="name" placeholder="Name and surname" required>
+      <input type="text" id="address" placeholder="Address" required>
+      <input type="tel" id="phone" placeholder="Telephone" required>
+      <button type="submit">Complete Order</button>
+    </form>
+  </div>
+
+
+
+  <!-- Modals -->
+   <!-- Modal for Trash -->
+
+  <div id="trash-modal" class="modal">
+    <span class="modal-close" onclick="closeModal('trash-modal')">×</span>
+    <div class="modal-content">
+      <h2>🗑️ Trash</h2>
+      <div id="trash-content"></div>
+    </div>
+  </div>
+
+  <!-- Modal for Order Summary -->
+<div id="order-modal" class="modal">
+
+    <div class="modal-content">
+      <h2>Order Summary</h2>
+      <div id="order-summary"></div>
+      <button onclick="printReceipt()">Print Receipt</button>
+      <button onclick="closeOrderSummaryModal()">Ok</button>
+    </div>
+  </div>
+
+<!-- Modal for Adding and Updating -->
+<div id="product-modal" class="modal">
+    <span class="modal-close" onclick="closeProductModal()">×</span>
+    <div class="modal-content">
+      <h2 id="add-product-modal-title">Add new Product</h2>
+      <form id="add-product-form">
+        <input type="text" id="new-name" placeholder="Product Name" >
+        <input type="number" id="new-price" placeholder="Price" >
+        <input type="text" id="new-image" placeholder="Image URL" >
+        <select id="new-category"></select>
+        <button type="submit">Add New Product</button>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- Modal for Deleting Product -->
+
+  <div id="delete-modal" class="modal">
+    <span class="modal-close" onclick="closeModal('delete-modal')">×</span>
+    <div class="modal-content ">
+      <p id="delete-text">Do you want to delete this product?</p>
+      <button onclick="confirmDelete()">Yes</button>
+      <button onclick="cancelDelete()">No</button>
+    </div>
+  </div>
+
+
+<!-- Modal for Past Orders-->
+<div id="order-history-modal" class="modal">
+    <span class="modal-close" onclick="closeModal('order-history-modal')">×</span>
+    <div class="modal-content">
+      <h2>📦 Past Orders</h2>
+      <div class="filter-controls">
+        <input type="date" id="date-start" onchange="renderOrderHistoryModal()">
+        <input type="date" id="date-end" onchange="renderOrderHistoryModal()">
+        <input type="text" id="order-search" placeholder="Search by name or phone..." oninput="renderOrderHistoryModal()">
+      </div>
+
+      <div id="order-history-content"></div>
+      <button onclick="closeModal('order-history-modal')">Close</button>
+    </div>
+  </div>
+
+<!-- Toast -->
+  <div id="toast-container"></div>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
