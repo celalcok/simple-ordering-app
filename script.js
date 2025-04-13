@@ -291,6 +291,8 @@ document
         editingProduct = null;
         document.querySelector("#add-product-form button").textContent =
           "Add Product";
+        closeModal('product-modal');
+          this.reset();
       } else {
        
         products.push({ name, price, image, category });
