@@ -1,65 +1,82 @@
-🛒 Online Order Management App
+# 🛒 Simple Ordering App
 
-A lightweight front-end web application for managing online product orders.  
-Built with **HTML**, **CSS**, and **Vanilla JavaScript**, with a clean UI and responsive design.
+A full-featured, responsive, and modern product ordering interface built with **HTML**, **CSS**, and **Vanilla JavaScript** — no frameworks, no build tools.  
+Easily manage your product catalog, cart, order history, and simulate payments in a fully localStorage-based environment.
+
+👉 **Live Demo:** [https://simple-ordering-app.vercel.app/](https://simple-ordering-app.vercel.app/)
 
 ---
 
 ## 🚀 Features
 
-- 🧾 Add, update, and delete products
-- 📦 Manage cart and place orders
-- 📋 View order summary in modal
-- 🗃️ View and filter past orders (by date, name, phone)
-- 🗑️ Trash bin with restore & permanent delete
-- 📅 Date range filtering for orders
-- 🔍 Live search by customer name or phone
-- 📂 Product category filtering
-- 🖼️ Product images & automatic layout
-- 🛠️ Toast notification system (feedback for actions)
-- 🖨️ Printable order receipt
-- 🔄 Fully localStorage based (data persistence)
+- ✅ Add / Update / Delete products
+- ✅ Responsive product cards with images and categories
+- ✅ Cart with quantity control and live total calculation
+- ✅ Order form with name, address, phone, and payment info
+- ✅ Credit card & cash payment simulation
+- ✅ Order summary modal with printable receipt
+- ✅ Order history with:
+  - Date filtering
+  - Text search (name or phone)
+  - Grand total calculation
+  - Delete selected / Select all
+- ✅ Trash system for restoring deleted orders
+- ✅ Toast notifications for key actions
+- ✅ Full dark mode support with toggle
+- ✅ Persistent data with localStorage
 
 ---
 
-## 🧱 Technologies
+## 🧱 Built With
 
 - HTML5
-- CSS3
-- JavaScript (ES6)
-- localStorage (for data persistence)
+- CSS3 (with CSS variables and custom theming)
+- JavaScript (ES6+)
+- No frameworks
+- No backend
 
 ---
-📦 How to Use
 
-1. Clone or download the project
+## 🌙 Dark Mode Support
+
+Toggle dark/light themes using the "🌓 Toggle Theme" button. Theme preference is saved in `localStorage`.
+
+---
+
+## 📦 How to Use
+
+1. Clone or download this repo
 2. Open `index.html` in your browser
-3. Start adding products, managing cart, and placing orders
+3. Start adding products and placing orders
 
-No build tools, no backend — everything runs in the browser.
-
----
-
-## 💡 Future Suggestions
-
-- ✅ User login (admin vs guest)
-- ✅ Product stock tracking
-- ✅ Real backend (e.g., Firebase or Supabase)
-- ✅ Dark/light theme support
-- ✅ Export order history to CSV or PDF
+_No build step, no server — it's all front-end._
 
 ---
 
-## 📸 Preview
+## 💡 Ideas for Expansion
 
-_(https://simple-ordering-app.vercel.app/)_
+- [ ] Multi-user login & user-based storage
+- [ ] Firebase or Supabase integration
+- [ ] Product stock tracking
+- [ ] Order export (CSV / PDF)
+- [ ] Drag & drop product sorting
+- [ ] Delivery tracking system
+
+---
+
+## 📸 Screenshots
+
+_(You can add screenshots or a GIF preview here later)_
+
+---
+
+## 🧑‍💻 Author
+
+Made with 💻 by **Celal**  
+[https://simple-ordering-app.vercel.app/](https://simple-ordering-app.vercel.app/)
 
 ---
 
 ## 📄 License
 
-MIT — free to use and modify.
-
----
-
-Made with 💻 by [Celal]
+MIT — Free to use, modify, and share.
