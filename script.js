@@ -129,6 +129,7 @@ function addToCart(product, price, image) {
   }
   updateCartDisplay();
   saveCartToStorage();
+  showToast("Product added to cart!")
 }
 // -----------------------------------Add To Cart End-------------------------------
 
@@ -212,7 +213,7 @@ document.getElementById("order-form").addEventListener("submit", function (e) {
 
   const total = cart.reduce((sum, item) => sum + item.total, 0);
   const paymentMethod = document.getElementById("payment-method").value;
-  
+
   let orderHTML = `
   <p><strong>Order No:</strong> ${orderId}</p>
   <p><strong>Date:</strong> ${dateString} - ${timeString}</p>
@@ -320,6 +321,7 @@ document
           "Add Product";
         closeModal('product-modal');
           this.reset();
+          showToast("Product updated successfully");
       } else {
        
         products.push({ name, price, image, category });
