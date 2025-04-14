@@ -354,7 +354,7 @@ function deleteProduct(name) {
   productToDelete = name;
   document.getElementById(
     "delete-text"
-  ).textContent = `"${name}" ürününü silmek istiyor musunuz?`;
+  ).textContent = `Do you want the product named "${name}"?`;
   document.getElementById("delete-modal").style.display = "block";
 }
 
