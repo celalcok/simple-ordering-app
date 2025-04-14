@@ -32,7 +32,23 @@
       <input type="text" id="name" placeholder="Name and surname" required>
       <input type="text" id="address" placeholder="Address" required>
       <input type="tel" id="phone" placeholder="Telephone" required>
+      <fieldset id="payment-section">
+        <legend>Payment</legend>
+        <select id="payment-method" required>
+          <option value="">Select a payment method</option>
+          <option value="card">Credit Card</option>
+          <option value="cash">Cash</option>
+        </select>
+      
+        <div id="card-info" style="display: none;">
+          <input type="text" id="card-number" placeholder="Card Number">
+          <input type="text" id="card-name" placeholder="Name on Card">
+          <input type="text" id="card-expiry" placeholder="MM/YY">
+          <input type="text" id="card-cvc" placeholder="CVC">
+        </div>
+      </fieldset>
       <button type="submit">Complete Order</button>
+      
     </form>
   </div>
 

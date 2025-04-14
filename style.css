@@ -218,6 +218,17 @@ form button[type="submit"]:hover {
     margin-right: 8px;
 }
 
+
+fieldset {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 15px;
+  }
+  legend {
+    font-weight: bold;
+  }
+  
 /* ------------------------------Cart End------------------------------*/
 
 select {

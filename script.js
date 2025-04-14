@@ -211,13 +211,16 @@ document.getElementById("order-form").addEventListener("submit", function (e) {
   }
 
   const total = cart.reduce((sum, item) => sum + item.total, 0);
-
+  const paymentMethod = document.getElementById("payment-method").value;
+  
   let orderHTML = `
   <p><strong>Order No:</strong> ${orderId}</p>
   <p><strong>Date:</strong> ${dateString} - ${timeString}</p>
   <p><strong>Name:</strong> ${name}</p>
   <p><strong>Address:</strong> ${address}</p>
   <p><strong>Telephone Number:</strong> ${phone}</p>
+  <p><strong>Payment:</strong> ${paymentMethod === "card" ? "Credit Card" : "Cash"}</p>
+
   <hr>
   <h4>Order:</h4>
   <div style="text-align:left;">`;
@@ -245,11 +248,35 @@ document.getElementById("order-form").addEventListener("submit", function (e) {
     address,
     phone,
     items: cart,
+    payment: paymentMethod
   };
 
   let orderHistory = JSON.parse(localStorage.getItem("orders") || "[]");
   orderHistory.push(orderRecord);
   localStorage.setItem("orders", JSON.stringify(orderHistory));
+
+  // Payment 
+  
+
+  if (!paymentMethod) {
+    alert("Please select a payment method.");
+    return;
+  }
+  
+  if (paymentMethod === "card") {
+    const cardNumber = document.getElementById("card-number").value.trim();
+    const cardName = document.getElementById("card-name").value.trim();
+    const cardExpiry = document.getElementById("card-expiry").value.trim();
+    const cardCvc = document.getElementById("card-cvc").value.trim();
+  
+    if (!cardNumber || !cardName || !cardExpiry || !cardCvc) {
+      alert("Please fill in all card details.");
+      return;
+    }
+  }
+  showToast("Payment successful. Order completed!");
+
+
 });
 
 
@@ -472,7 +499,6 @@ function renderOrderHistoryModal() {
       </li>`
         )
         .join("");
-      const total = order.items.reduce((sum, i) => sum + i.total, 0);
 
       return `
         <div class="history-cart">
@@ -624,3 +650,14 @@ function deletSelectedOrders() {
   }
   
 //   -------------------------------Show Toast End-----------------------------------
+
+
+//   -------------------------------Payment-----------------------------------
+
+document.getElementById('payment-method').addEventListener('change', function () {
+  const cardFields = document.getElementById('card-info');
+  cardFields.style.display = this.value === 'card' ? 'block' : 'none';
+});
+
+//   -------------------------------Payment End-----------------------------------
+
