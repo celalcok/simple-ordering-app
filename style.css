@@ -1,55 +1,70 @@
-
-
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
-:root{
-    --input-bg-color:gray;
-    --input-bg-hover-color:orange;
-    --button-bg-color:yellowgreen;
-    --button-bg-hover-color:rgb(106, 154, 11);
-    --modal-bg-color-1:#13c91380;
-    --modal-bg-color-2:#191fe480;
-    --modal-bg-color-3:#c92e1380;
-    --modal-bg-color-4:#c9c91380;
+:root {
+    --button-bg-hover-color: rgb(106, 154, 11);
+    --modal-bg-color: #2d2d2d80;
 
-    --font-size:20px
+    --bg-color: #f2f2f2;
+    --text-color: #333;
+    --card-bg: #fff;
+    --border-color: #ccc;
+    --accent: #007bff;
+    --accent-hover: #0056b3;
+    --font-size: 20px;
 }
 body {
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 20px;
-    background-color: #f2f2f2;
     font-size: var(--font-size);
+    background-color: var(--bg-color);
+    color: var(--text-color);
 }
 
+ 
+
+body.dark {
+    --bg-color: #1e1e1e;
+    --text-color: #f0f0f0;
+    --card-bg: #2a2a2a;
+    --accent: #66b0ff;
+    --button-bg: #333;
+    --button-text: #fff;
+  }
+  .product,
+  .cart-box,
+  .modal-content,
+  .history-card {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+  }
 h1 {
     text-align: center;
-    color: #333;
     margin-bottom: 40px;
 }
 
-select, input,button{
+select,
+input,
+button {
     padding: 10px;
     border-radius: 6px;
     border: 1px solid #ccc;
     color: white;
-    flex:1;
+    flex: 1;
     margin: 5px;
     color: black;
 }
-button{
-    background-color: var(--button-bg-color);
+button {
     cursor: pointer;
-    color: black;
-    
+    background-color: var(--button-bg);
+    color: var(--button-text);
 }
-button:hover{
+button:hover {
     background-color: var(--button-bg-hover-color);
 }
-
 
 #top-bar {
     display: flex;
@@ -77,14 +92,13 @@ button:hover{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background: white;
     border-radius: 12px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     padding: 15px;
     width: 220px;
     text-align: center;
     transition: transform 0.2s;
-    height: 100%; 
+    height: 100%;
 }
 .product img {
     width: 100%;
@@ -95,10 +109,9 @@ button:hover{
 }
 .product:hover img {
     object-fit: contain;
-    background-color: white; 
+    background-color: white;
 }
 /* ------------------------------Products End ------------------------------*/
-
 
 /* ------------------------------Cart ------------------------------*/
 .cart-box {
@@ -106,7 +119,6 @@ button:hover{
     top: 5px;
     right: 5px;
     width: 400px;
-    background-color: white;
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     padding: 20px;
@@ -115,7 +127,6 @@ button:hover{
 
 .cart-box h3 {
     margin-top: 0;
-    color: #333;
     text-align: center;
 }
 
@@ -180,7 +191,6 @@ button:hover{
     border-radius: 4px;
     cursor: pointer;
     font-weight: bold;
-    
 }
 
 .item-buttons button:hover {
@@ -192,7 +202,6 @@ form {
     flex-direction: column;
     gap: 10px;
 }
-
 
 form button[type="submit"] {
     background-color: #28a745;
@@ -209,7 +218,6 @@ form button[type="submit"]:hover {
     background-color: #218838;
 }
 
-
 .cart-thumb {
     width: 40px;
     height: 30px;
@@ -218,17 +226,16 @@ form button[type="submit"]:hover {
     margin-right: 8px;
 }
 
-
 fieldset {
     border: 1px solid #ccc;
     padding: 10px;
     border-radius: 8px;
     margin-top: 15px;
-  }
-  legend {
+}
+legend {
     font-weight: bold;
-  }
-  
+}
+
 /* ------------------------------Cart End------------------------------*/
 
 select {
@@ -246,19 +253,16 @@ select {
     background-repeat: no-repeat;
     background-position: right 10px center;
     background-size: 12px;
-  }
-  
+}
+
 /* ------------------------------Order History------------------------------*/
 
-
-
-#order-history-modal input{
+#order-history-modal input {
     color: black;
 }
 
-
 .history-cart {
-    background: white;
+    background: var(--card-bg);
     border-radius: 8px;
     padding: 15px;
     margin-bottom: 15px;
@@ -276,20 +280,18 @@ select {
     display: flex;
     flex-direction: column;
     gap: 10px;
-   
 }
 
-
-
-.history-card ul,li{
+.history-card ul,
+li {
     display: block;
-    flex-direction:column ;
+    flex-direction: column;
     gap: 10px;
     list-style: none;
     margin: 10px 0;
 }
 
-.filter-controls{
+.filter-controls {
     display: flex;
     gap: 10px;
 }
@@ -306,12 +308,12 @@ select {
     color: black;
     cursor: pointer;
     transition: color 0.2s;
-  }
-  
-  .modal-close:hover {
+}
+
+.modal-close:hover {
     color: white;
-  }
-  
+}
+
 .modal {
     display: none;
     position: fixed;
@@ -325,7 +327,8 @@ select {
 }
 
 .modal-content {
-    background-color: white;
+    background-color: var(--card-bg);
+    color: var(--text-color);
     margin: 5% auto;
     padding: 20px;
     border-radius: 12px;
@@ -340,53 +343,53 @@ select {
 
 .modal-content h2 {
     margin-top: 0;
+    color: var(--text-color);
 }
-
-
+  
+.modal-content button {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+  }
+  
 .modal-content button:hover {
     background-color: var(--input-bg-hover-color);
 }
 
-
 /* Modal for Product Add*/
 
 #product-modal {
-    background: var(--modal-bg-color-1);
+    background: var(--modal-bg-color);
 }
 #product-modal div {
     max-width: 350px;
 }
-#product-modal  form input{
+#product-modal form input {
     color: black;
 }
 
 /* Modal for Orders*/
 #order-modal {
-    background: var(--modal-bg-color-2);
+    background: var(--modal-bg-color);
 }
 #order-modal div {
     max-width: 800px;
 }
 
-
-
 /* Modal for Past Orders */
-#order-history-modal{
-    background: var(--modal-bg-color-3);
+#order-history-modal {
+    background: var(--modal-bg-color);
 }
-#order-history-modal div{
+#order-history-modal div {
     text-align: left;
     max-width: 800px;
 }
 
-#trash-modal{
-    background: var(--modal-bg-color-4);
-    
+#trash-modal {
+    background: var(--modal-bg-color);
 }
-#trash-modal div{
+#trash-modal div {
     text-align: left;
     max-width: 800px;
-
 }
 /* ---------------------------------------------MODALS END-------------------------------------*/
 
@@ -407,7 +410,7 @@ select {
     color: white;
     padding: 12px 20px;
     border-radius: 6px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
     opacity: 0.95;
     animation: fadeOut 0.5s ease 3s forwards;
 }

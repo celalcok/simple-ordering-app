@@ -2,9 +2,9 @@
 
 let cart = [];
 const now = new Date();
-const dateString = now.toISOString().split('T')[0]; 
+const dateString = now.toISOString().split("T")[0];
 const timeString = now.toLocaleTimeString("tr-TR");
-const orderId = "ORDER" + now.getTime(); 
+const orderId = "ORDER" + now.getTime();
 const cartElement = document.getElementById("cart");
 const formElement = document.getElementById("order-form");
 let productToDelete = null;
@@ -31,8 +31,6 @@ let products = JSON.parse(localStorage.getItem("products")) || [
 ];
 // -----------------------------------Variables End-------------------------------
 
-
-
 // -----------------------------------Edit Product-------------------------------
 
 function editProduct(name) {
@@ -52,8 +50,6 @@ function editProduct(name) {
   openProductModal(true);
 }
 // -----------------------------------Edit Product End-------------------------------
-
-
 
 // -----------------------------------Render Products-------------------------------
 
@@ -82,7 +78,6 @@ function renderProducts() {
 
 // -----------------------------------Render Products End-------------------------------
 
-
 // -----------------------------------Window Load-------------------------------
 
 window.onload = function () {
@@ -91,7 +86,7 @@ window.onload = function () {
     cart = JSON.parse(savedCart);
     updateCartDisplay();
   }
-  renderProducts(); 
+  renderProducts();
   renderCategorySelects();
   if (cart.length === 0) {
     cartElement.innerHTML = "<li>Cart is empty.</li>";
@@ -101,15 +96,11 @@ window.onload = function () {
 
 // -----------------------------------Window Load End-------------------------------
 
-
-
 // ----------------------------Save Cart To Local Storage-------------------------------
 function saveCartToStorage() {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
 // ----------------------------Save Cart To Local Storage End-------------------------------
-
-
 
 // -----------------------------------Add To Cart-------------------------------
 
@@ -129,10 +120,9 @@ function addToCart(product, price, image) {
   }
   updateCartDisplay();
   saveCartToStorage();
-  showToast("Product added to cart!")
+  showToast("Product added to cart!");
 }
 // -----------------------------------Add To Cart End-------------------------------
-
 
 // -----------------------------------Increase and Decrease Quantity-------------------------------
 
@@ -160,7 +150,6 @@ function decreaseQuantity(product) {
   }
 }
 // -----------------------------------Increase and Decrease Quantity End-------------------------------
-
 
 // -----------------------------------Update Cart-------------------------------
 
@@ -191,7 +180,6 @@ function updateCartDisplay() {
 
 // -----------------------------------Update Cart End-------------------------------
 
-
 // -----------------------------------Order Submit-------------------------------
 
 document.getElementById("order-form").addEventListener("submit", function (e) {
@@ -220,7 +208,9 @@ document.getElementById("order-form").addEventListener("submit", function (e) {
   <p><strong>Name:</strong> ${name}</p>
   <p><strong>Address:</strong> ${address}</p>
   <p><strong>Telephone Number:</strong> ${phone}</p>
-  <p><strong>Payment:</strong> ${paymentMethod === "card" ? "Credit Card" : "Cash"}</p>
+  <p><strong>Payment:</strong> ${
+    paymentMethod === "card" ? "Credit Card" : "Cash"
+  }</p>
 
   <hr>
   <h4>Order:</h4>
@@ -249,37 +239,33 @@ document.getElementById("order-form").addEventListener("submit", function (e) {
     address,
     phone,
     items: cart,
-    payment: paymentMethod
+    payment: paymentMethod,
   };
 
   let orderHistory = JSON.parse(localStorage.getItem("orders") || "[]");
   orderHistory.push(orderRecord);
   localStorage.setItem("orders", JSON.stringify(orderHistory));
 
-  // Payment 
-  
+  // Payment
 
   if (!paymentMethod) {
     alert("Please select a payment method.");
     return;
   }
-  
+
   if (paymentMethod === "card") {
     const cardNumber = document.getElementById("card-number").value.trim();
     const cardName = document.getElementById("card-name").value.trim();
     const cardExpiry = document.getElementById("card-expiry").value.trim();
     const cardCvc = document.getElementById("card-cvc").value.trim();
-  
+
     if (!cardNumber || !cardName || !cardExpiry || !cardCvc) {
       alert("Please fill in all card details.");
       return;
     }
   }
   showToast("Payment successful. Order completed!");
-
-
 });
-
 
 // Close Order Summary Modal
 function closeOrderSummaryModal() {
@@ -290,7 +276,6 @@ function closeOrderSummaryModal() {
   document.getElementById("order-form").reset();
 }
 // -----------------------------------Order Submit End-------------------------------
-
 
 // -----------------------------------Add new Product-------------------------------
 
@@ -305,10 +290,9 @@ document
     const category = document.getElementById("new-category").value.trim();
 
     if (!name || !price || !image || !category) {
-      showToast("Please enter all field.")
-    }else{
+      showToast("Please enter all field.");
+    } else {
       if (editingProduct) {
-        
         const product = products.find((p) => p.name === editingProduct);
         if (product) {
           product.name = name;
@@ -319,29 +303,24 @@ document
         editingProduct = null;
         document.querySelector("#add-product-form button").textContent =
           "Add Product";
-        closeModal('product-modal');
-          this.reset();
-          showToast("Product updated successfully");
+        closeModal("product-modal");
+        this.reset();
+        showToast("Product updated successfully");
       } else {
-       
         products.push({ name, price, image, category });
         showToast("Product added successfully ");
-        
-    this.reset();
-    closeModal('product-modal');
+
+        this.reset();
+        closeModal("product-modal");
       }
     }
 
-    
-    localStorage.setItem("products", JSON.stringify(products)); 
-    renderProducts(); 
+    localStorage.setItem("products", JSON.stringify(products));
+    renderProducts();
     renderCategorySelects();
-
-   
   });
 
-  // -----------------------------------Add new Product End-------------------------------
-
+// -----------------------------------Add new Product End-------------------------------
 
 // -----------------------------------Print-------------------------------
 
@@ -373,9 +352,7 @@ function printReceipt() {
   printWindow.close();
 }
 
-
 // -----------------------------------Print End-------------------------------
-
 
 // -----------------------------------Delete Product-------------------------------
 
@@ -398,7 +375,6 @@ function closeProductModal() {
   document.getElementById("product-modal").style.display = "none";
   document.getElementById("add-product-form").reset();
   editingProduct = null;
-  
 }
 
 function confirmDelete() {
@@ -420,7 +396,6 @@ function closeDeleteModal() {
   productToDelete = null;
 }
 // -----------------------------------Delete Product End-------------------------------
-
 
 // -----------------------------------Categories-------------------------------
 
@@ -444,7 +419,7 @@ function renderCategorySelects() {
 
   // Category List
   const filterSelect = document.getElementById("category-filter");
-  const current = filterSelect.value; 
+  const current = filterSelect.value;
   filterSelect.innerHTML =
     `<option value="">All Categories</option>` +
     categories.map((c) => `<option value="${c}">${c}</option>`).join("");
@@ -453,27 +428,28 @@ function renderCategorySelects() {
 
 // -----------------------------------Categories End-------------------------------
 
-
 // -----------------------------------Render Order History-------------------------------
 function renderOrderHistoryModal() {
-  
-  const allOrders = JSON.parse(localStorage.getItem('orders') || '[]');
-  const query = document.getElementById('order-search')?.value.toLowerCase() || '';
-  const start = document.getElementById('date-start')?.value;
-  const end = document.getElementById('date-end')?.value;
-  const orders = allOrders.filter(order =>
-  {
-    const matchesText =order.name.toLowerCase().includes(query) || order.phone.includes(query);
+  const allOrders = JSON.parse(localStorage.getItem("orders") || "[]");
+  const query =
+    document.getElementById("order-search")?.value.toLowerCase() || "";
 
+  const start = document.getElementById("date-start")?.value;
+  const end = document.getElementById("date-end")?.value;
+  const orders = allOrders.filter((order) => {
     const orderDate = order.date ? new Date(order.date) : null;
+    const matchesText =
+      order.name.toLowerCase().includes(query) || order.phone.includes(query);
 
-    const afterStart = start ? (orderDate && orderDate >= new Date(start)) : true;
-    const beforeEnd = end ? (orderDate && orderDate <= new Date(end)) : true;
-    
+    const validStart = start
+      ? orderDate && !isNaN(orderDate) && orderDate >= new Date(start)
+      : true;
+    const validEnd = end
+      ? orderDate && !isNaN(orderDate) && orderDate <= new Date(end)
+      : true;
 
-    return matchesText && afterStart && beforeEnd;
-  }
-  );
+    return matchesText && validStart && validEnd;
+  });
   const container = document.getElementById("order-history-content");
   if (orders.length === 0) {
     container.innerHTML = "<p>No past orders found.</p>";
@@ -529,8 +505,6 @@ function renderOrderHistoryModal() {
 }
 // -----------------------------------Render Order History End-------------------------------
 
-
-
 // -----------------------------------DELETE ORDERS-------------------------------
 
 function toggleAllOrders(masterCheckbox) {
@@ -543,44 +517,41 @@ function deletSelectedOrders() {
     .filter((cb) => cb.checked)
     .map((cb) => cb.dataset.id);
 
-    if (!confirm("Are you sure?")){
-      return;
-    }else{
-      let orders = JSON.parse(localStorage.getItem('orders') || '[]');
-    let trash = JSON.parse(localStorage.getItem('orderTrash') || '[]');
-  
-    const toTrash = orders.filter(o => selectedIds.includes(o.id));
+  if (!confirm("Are you sure?")) {
+    return;
+  } else {
+    let orders = JSON.parse(localStorage.getItem("orders") || "[]");
+    let trash = JSON.parse(localStorage.getItem("orderTrash") || "[]");
+
+    const toTrash = orders.filter((o) => selectedIds.includes(o.id));
     trash = trash.concat(toTrash);
-  
-    orders = orders.filter(o => !selectedIds.includes(o.id));
-  
-    localStorage.setItem('orders', JSON.stringify(orders));
-    localStorage.setItem('orderTrash', JSON.stringify(trash));
-  
+
+    orders = orders.filter((o) => !selectedIds.includes(o.id));
+
+    localStorage.setItem("orders", JSON.stringify(orders));
+    localStorage.setItem("orderTrash", JSON.stringify(trash));
+
     renderOrderHistoryModal();
-    showToast("Order deleted successfully")
-    }
-
-    
-
+    showToast("Order deleted successfully");
+  }
 }
 
 // -----------------------------------DELETE ORDERS END-------------------------------
 
-
-
 // -----------------------------------TRASH-------------------------------
 
-  function renderTrash() {
-    const trash = JSON.parse(localStorage.getItem('orderTrash') || '[]');
-    const container = document.getElementById('trash-content');
-    console.log("Trash")
-    if (trash.length === 0) {
-      container.innerHTML = "<p>Trash is empty.</p>";
-      return;
-    }
-  
-    container.innerHTML = trash.map(order => `
+function renderTrash() {
+  const trash = JSON.parse(localStorage.getItem("orderTrash") || "[]");
+  const container = document.getElementById("trash-content");
+  console.log("Trash");
+  if (trash.length === 0) {
+    container.innerHTML = "<p>Trash is empty.</p>";
+    return;
+  }
+
+  container.innerHTML = trash
+    .map(
+      (order) => `
       <div style="border: 1px solid #ddd; padding: 10px; margin-bottom: 10px;">
         <strong>${order.id}</strong> - ${order.name} - ${order.phone}
         <div class="trash-buttons">
@@ -588,78 +559,96 @@ function deletSelectedOrders() {
         <button onclick="deleteOrderPermanently('${order.id}')">Delete Forever</button>
         </div>
       </div>
-    `).join('');
-  }
-  
-  function openTrashModal() {
-    document.getElementById('trash-modal').style.display = 'block';
-    renderTrash();
-  }
-  function restoreOrder(id) {
-    let trash = JSON.parse(localStorage.getItem('orderTrash') || '[]');
-    let orders = JSON.parse(localStorage.getItem('orders') || '[]');
-  
-    const restored = trash.find(o => o.id === id);
-    if (!restored) return;
-  
-    orders.push(restored);
-    trash = trash.filter(o => o.id !== id);
-  
-    localStorage.setItem('orders', JSON.stringify(orders));
-    localStorage.setItem('orderTrash', JSON.stringify(trash));
-  
-    renderTrash();
-    renderOrderHistoryModal();
-    showToast("Order restored successfully")
-  }
-  
-  function deleteOrderPermanently(id) {
-    let trash = JSON.parse(localStorage.getItem('orderTrash') || '[]');
-    trash = trash.filter(o => o.id !== id);
-    localStorage.setItem('orderTrash', JSON.stringify(trash));
-    renderTrash();
-    showToast("Order deleted permanently!");
+    `
+    )
+    .join("");
+}
 
-  }
+function openTrashModal() {
+  document.getElementById("trash-modal").style.display = "block";
+  renderTrash();
+}
+function restoreOrder(id) {
+  let trash = JSON.parse(localStorage.getItem("orderTrash") || "[]");
+  let orders = JSON.parse(localStorage.getItem("orders") || "[]");
+
+  const restored = trash.find((o) => o.id === id);
+  if (!restored) return;
+
+  orders.push(restored);
+  trash = trash.filter((o) => o.id !== id);
+
+  localStorage.setItem("orders", JSON.stringify(orders));
+  localStorage.setItem("orderTrash", JSON.stringify(trash));
+
+  renderTrash();
+  renderOrderHistoryModal();
+  showToast("Order restored successfully");
+}
+
+function deleteOrderPermanently(id) {
+  let trash = JSON.parse(localStorage.getItem("orderTrash") || "[]");
+  trash = trash.filter((o) => o.id !== id);
+  localStorage.setItem("orderTrash", JSON.stringify(trash));
+  renderTrash();
+  showToast("Order deleted permanently!");
+}
 // -----------------------------------TRASH END-------------------------------
 
 //   -------------------------------Modal Open and Close-----------------------------------
-  function openModal(id) {
-    const el = document.getElementById(id);
-    if (el) el.style.display = 'block';
-  }
-  
-  function closeModal(id) {
-    const el = document.getElementById(id);
-    if (el) el.style.display = 'none';
-  }
+function openModal(id) {
+  const el = document.getElementById(id);
+  if (el) el.style.display = "block";
+}
+
+function closeModal(id) {
+  const el = document.getElementById(id);
+  if (el) el.style.display = "none";
+}
 //   -------------------------------Modal Open and Close End-----------------------------------
 
-
 //   -------------------------------Show Toast-----------------------------------
-  
-  function showToast(message) {
-    const toastContainer = document.getElementById("toast-container");
-    const toast = document.createElement("div");
-    toast.className = "toast";
-    toast.innerText = message;
-  
-    toastContainer.appendChild(toast);
-  
-    setTimeout(() => {
-      toast.remove();
-    }, 4000); 
-  }
-  
-//   -------------------------------Show Toast End-----------------------------------
 
+function showToast(message) {
+  const toastContainer = document.getElementById("toast-container");
+  const toast = document.createElement("div");
+  toast.className = "toast";
+  toast.innerText = message;
+
+  toastContainer.appendChild(toast);
+
+  setTimeout(() => {
+    toast.remove();
+  }, 4000);
+}
+
+//   -------------------------------Show Toast End-----------------------------------
 
 //   -------------------------------Payment-----------------------------------
 
-document.getElementById('payment-method').addEventListener('change', function () {
-  const cardFields = document.getElementById('card-info');
-  cardFields.style.display = this.value === 'card' ? 'block' : 'none';
-});
+document
+  .getElementById("payment-method")
+  .addEventListener("change", function () {
+    const cardFields = document.getElementById("card-info");
+    cardFields.style.display = this.value === "card" ? "block" : "none";
+  });
 
 //   -------------------------------Payment End-----------------------------------
 
+
+
+//   -------------------------------Thema-----------------------------------
+function toggleTheme() {
+  document.body.classList.toggle("dark");
+  const isDark = document.body.classList.contains("dark");
+  localStorage.setItem("theme", isDark ? "dark" : "light");
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme === "dark") {
+    document.body.classList.add("dark");
+  }
+});
+
+//   -------------------------------Thema End-----------------------------------
