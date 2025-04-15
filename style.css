@@ -423,3 +423,62 @@ li {
 }
 
 /* ------------------------------Toast End------------------------------*/
+
+
+/* ------------------------------Responsive------------------------------*/
+
+
+@media (max-width: 768px) {
+    .product {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    
+    .cart-box {
+        position: static;
+        width: 100%;
+        margin-top: 20px;
+    }
+    
+    .modal-content {
+        max-width: 95%;
+        padding: 10px;
+    }
+    
+    .modal-content h2 {
+        font-size: 1.2rem;
+    }
+    
+    .modal-content button {
+        width: 100%;
+    }
+    
+    input, select, button {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    
+}
+
+@media (max-width: 600px) {
+    #top-bar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    #top-bar > * {
+        width: 100%;
+    }
+}
+
+@media (max-width: 500px) {
+    #toast-container {
+        top: 10px;
+        bottom: auto;
+        right: 10px;
+    }
+}
+
+/* ------------------------------Responsive End------------------------------*/
