@@ -63,16 +63,6 @@ _No build step, no server — it's all front-end._
 - [ ] Delivery tracking system
 
 ---
-
-## 📸 Screenshots
-
-_(You can add screenshots or a GIF preview here later)_
-
----
-
-## 🧑‍💻 Author
-
-Made with 💻 by **Celal**  
 [https://simple-ordering-app.vercel.app/](https://simple-ordering-app.vercel.app/)
 
 ---
