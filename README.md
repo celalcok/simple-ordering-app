@@ -1,6 +1,6 @@
 # 🛒 Simple Ordering App
 
-A full-featured, responsive, and modern product ordering interface built with **HTML**, **CSS**, and **Vanilla JavaScript** — no frameworks, no build tools.  
+A full-featured, responsive, and modern product ordering interface built with **HTML**, **CSS**, and **JavaScript** — no frameworks, no build tools.  
 Easily manage your product catalog, cart, order history, and simulate payments in a fully localStorage-based environment.
 
 👉 **Live Demo:** [https://simple-ordering-app.vercel.app/](https://simple-ordering-app.vercel.app/)
